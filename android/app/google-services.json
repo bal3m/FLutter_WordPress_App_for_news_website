@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "517727549666",
+    "firebase_url": "https://waka-1dd64.firebaseio.com",
+    "project_id": "waka-1dd64",
+    "storage_bucket": "waka-1dd64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:517727549666:android:b39927d2619a50085086bb",
+        "android_client_info": {
+          "package_name": "com.msfhor.wakala"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "517727549666-gqle53use2tav6cbi0trpo1ihkjrdhoe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYu12--7RQcMeOjf6NMWteV46DzR_Oghk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "517727549666-gqle53use2tav6cbi0trpo1ihkjrdhoe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
