@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 //import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -110,8 +112,11 @@ class _SearchState extends State<Search> {
           60.0,
         ),
       ),
-      body: Center(
-        child: Text("قم بكتابة ما تريد البحث عنه لمشاهدة النتائج"),
+      body: WillPopScope(
+        onWillPop: _onBackPressed,
+        child: Center(
+          child: Text("قم بكتابة ما تريد البحث عنه لمشاهدة النتائج"),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.search),
@@ -138,10 +143,10 @@ class _SearchState extends State<Search> {
             } 
             break; 
             
-             case 2: {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Search()));
-            } 
-            break; 
+            //  case 2: {
+            //   Navigator.push(context, MaterialPageRoute(builder: (context)=>Search()));
+            // } 
+            // break; 
             case 3: {
               Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
             } 
@@ -177,7 +182,30 @@ class _SearchState extends State<Search> {
       ),
     ); 
   }
-  
+  Future<bool> _onBackPressed() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('هل أنت متأكد؟',textDirection: TextDirection.rtl,),
+            content:Text('أنت على وشك إغلاق التطبيق!!',textDirection: TextDirection.rtl,),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('تراجع',textDirection: TextDirection.rtl,),
+                onPressed: () {
+                  Navigator.of(context).pop(false);
+                },
+              ),
+              FlatButton(
+                child: Text('تأكيد',textDirection: TextDirection.rtl,),
+                onPressed: () {
+                  exit(0);
+                },
+              ),
+            ],
+          );
+        });
+  }
 }
 
 

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 //import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -70,63 +72,67 @@ class _HomeState extends State<Home> {
         title: Text("وكالة أنباء المستقبل"),
         // backgroundColor: Color.fromRGBO(212, 175, 55, 1),
       ),
-      body:  ListView(
-        children: <Widget>[
-          Column(
-            children: <Widget>[
-              Image.asset(data[3]['image'],height: 200,width: 300,),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
-                child: Column(
-                children: <Widget>[
-                   Text(data[3]['content'],style:TextStyle(fontSize:18,),textDirection: TextDirection.rtl,textAlign: TextAlign.center, ),
-                   Padding(
-                     padding: const EdgeInsets.all(15.0),
-                     child: Center(
-                       child: Padding(
-                         padding: const EdgeInsets.fromLTRB(75, 0, 0, 0),
-                         child: AboutListTile(
-                         applicationIcon:Image.asset("images/icon.png",height: 80,width: 50,),
+      body:  WillPopScope(
+        onWillPop: _onBackPressed,
+        child: ListView(
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                Image.asset(data[3]['image'],height: 200,width: 300,),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
+                  child: Column(
+                  children: <Widget>[
+                     Text(data[3]['content'],style:TextStyle(fontSize:18,),textDirection: TextDirection.rtl,textAlign: TextAlign.center, ),
+                     Padding(
+                       padding: const EdgeInsets.all(15.0),
+                       child: Center(
+                         child: Padding(
+                           padding: const EdgeInsets.fromLTRB(75, 0, 0, 0),
+                           child: AboutListTile(
+
+                           applicationIcon:Image.asset("images/icon.png",height: 80,width: 50,),
 
 //      icon: FlutterLogo(
 //        colors: Colors.yellow,
 //      ),
-                          aboutBoxChildren: <Widget>[
-                          SizedBox(
-                          height: 10.0,
-                          ),
-                          Text(
-                            "طور من قبل فريق تقنية المعلومات بمؤسسة الخدمات الإعلامية بمجلس النواب",
-                           ),
+                            aboutBoxChildren: <Widget>[
+                            SizedBox(
+                            height: 10.0,
+                            ),
+                            Text(
+                              "طور من قبل فريق تقنية المعلومات بمؤسسة الخدمات الإعلامية بمجلس النواب",textDirection: TextDirection.rtl,
+                             ),
 //        Text(
 //          "MTechViral",
 //        ),
-      ],
-      applicationName: "وكالة أنباء المستقبل",
-      applicationVersion: "1.0.0",
-      applicationLegalese: "Apache License 2.0",
+        ],
+                             applicationName: "وكالة أنباء المستقبل",
+                          applicationVersion: "1.0.0",
+                       applicationLegalese: "Apache License 2.0",
     ),
+                         ),
                        ),
                      ),
-                   ),
-                  //  IconButton(
-                  //       icon:Icon(Icons.launch,color: Colors.indigo,) ,
-                  //       iconSize: 30,
-                  //       onPressed: ()=>{
-                  //         _launchURL(context,3)
-                  //       }
-                  //     ),
-                ],
-                ),
+                    //  IconButton(
+                    //       icon:Icon(Icons.launch,color: Colors.indigo,) ,
+                    //       iconSize: 30,
+                    //       onPressed: ()=>{
+                    //         _launchURL(context,3)
+                    //       }
+                    //     ),
+                  ],
+                  ),
+              ),
             ),
-          ),
-                
-            ],
-          ),
-          
-        ],
+
+              ],
+            ),
+
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavyBar(
         backgroundColor: Color.fromRGBO(27,38,50,1),
@@ -240,7 +246,30 @@ class _HomeState extends State<Home> {
       // ),
     );
   }
-
+  Future<bool> _onBackPressed() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('هل أنت متأكد؟',textDirection: TextDirection.rtl,),
+            content:Text('أنت على وشك إغلاق التطبيق!!',textDirection: TextDirection.rtl,),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('تراجع',textDirection: TextDirection.rtl,),
+                onPressed: () {
+                  Navigator.of(context).pop(false);
+                },
+              ),
+              FlatButton(
+                child: Text('تأكيد',textDirection: TextDirection.rtl,),
+                onPressed: () {
+                  exit(0);
+                },
+              ),
+            ],
+          );
+        });
+  }
 ////////////////////////////////////////////////////////////
 
 

@@ -114,9 +114,9 @@ class _TabBarDemoState extends State<TabBarDemo> {
               } 
             break; 
   
-           case 1: {
-              Navigator.push(ctx, MaterialPageRoute(builder: (ctx)=>TabBarDemo()));
-            } 
+          //  case 1: {
+          //     Navigator.push(ctx, MaterialPageRoute(builder: (ctx)=>TabBarDemo()));
+          //   } 
             break; 
              case 2: {
               Navigator.push(ctx, MaterialPageRoute(builder: (ctx)=>Search()));

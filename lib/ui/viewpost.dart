@@ -12,7 +12,7 @@ class ViewPost extends StatelessWidget{
 
   const ViewPost({Key key, this.title,this.content,this.image}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext cntx) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(

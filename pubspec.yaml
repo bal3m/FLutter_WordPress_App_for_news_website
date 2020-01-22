@@ -11,7 +11,7 @@ description: News app.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+6
+version: 1.0.1+7
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -21,12 +21,16 @@ dependencies:
     sdk: flutter
   http:
   html:
+  url_launcher:
+  package_info:
+  firebase_remote_config: ^0.3.0+1
   bottom_navy_bar:
   auto_size_text:
   intro_slider:
   shared_preferences:
   cached_network_image:
   flutter_pagewise: ^1.2.3
+  onesignal_flutter: ^2.3.2
   cupertino_icons: ^0.1.2
 
 dev_dependencies:
