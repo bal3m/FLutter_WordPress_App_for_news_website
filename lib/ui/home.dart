@@ -24,168 +24,126 @@ class _HomeState extends State<Home> {
   int g=175;
 
   int b=55;
-//   FirebaseMessaging firebaseMessaging = new FirebaseMessaging();
-//  @override
-// void initState() {
-//   super.initState();
-//   firebaseMessaging.configure(
-//     onMessage: (Map<String, dynamic> message) {
-//       print('onMessage called: $message');
-//        showDialog(
-//                context: context,
-//                builder: (context) => AlertDialog(
-//                        content: ListTile(
-//                        title: Text(message['notification']['title']),
-//                        subtitle: Text(message['notification']['body']),
-//                        ),
-//                        actions: <Widget>[
-//                        FlatButton(
-//                            child: Text('Ok'),
-//                            onPressed: () => Navigator.of(context).pop(),
-//                        ),
-//                    ],
-//                ),
-//            );
-//
-//     },
-//     onResume: (Map<String, dynamic> message) {
-//       print('onResume called: $message');
-//     },
-//     onLaunch: (Map<String, dynamic> message) {
-//       print('onLaunch called: $message');
-//     },
-//   );
-//   firebaseMessaging.requestNotificationPermissions(
-//        const IosNotificationSettings(sound: true, badge: true, alert: true));
-//   firebaseMessaging.getToken().then((token){
-//   print('FCM Token: $token');
-// });
-// }
-
   @override
   Widget build(BuildContext context) {
     devise_size = MediaQuery.of(context).size;
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromRGBO(27,38,50,1),
-        title: Text("وكالة أنباء المستقبل"),
-        // backgroundColor: Color.fromRGBO(212, 175, 55, 1),
-      ),
-      body:  WillPopScope(
-        onWillPop: _onBackPressed,
-        child: ListView(
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                Image.asset(data[3]['image'],height: 200,width: 300,),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
-                  child: Column(
-                  children: <Widget>[
-                     Text(data[3]['content'],style:TextStyle(fontSize:18,),textDirection: TextDirection.rtl,textAlign: TextAlign.center, ),
-                     Padding(
-                       padding: const EdgeInsets.all(15.0),
-                       child: Center(
-                         child: Padding(
-                           padding: const EdgeInsets.fromLTRB(75, 0, 0, 0),
-                           child: AboutListTile(
+      appBar: AppBar(title: Center(child: Text('وكالة أنباء المستقبل',textDirection: TextDirection.rtl,)),backgroundColor: Color.fromRGBO(27,38,50,1),),
 
-                           applicationIcon:Image.asset("images/icon.png",height: 80,width: 50,),
+      body:  ListView(
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              Image.asset(data[3]['image'],height: 200,width: 300,),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
+                child: Column(
+                children: <Widget>[
+                   Text(data[3]['content'],style:TextStyle(fontSize:18,),textDirection: TextDirection.rtl,textAlign: TextAlign.center, ),
+                   Padding(
+                     padding: const EdgeInsets.all(15.0),
+                     child: Center(
+                       child: Padding(
+                         padding: const EdgeInsets.fromLTRB(75, 0, 0, 0),
+                         child: AboutListTile(
+
+                         applicationIcon:Image.asset("images/icon.png",height: 80,width: 50,),
 
 //      icon: FlutterLogo(
 //        colors: Colors.yellow,
 //      ),
-                            aboutBoxChildren: <Widget>[
-                            SizedBox(
-                            height: 10.0,
-                            ),
-                            Text(
-                              "طور من قبل فريق تقنية المعلومات بمؤسسة الخدمات الإعلامية بمجلس النواب",textDirection: TextDirection.rtl,
-                             ),
+                          aboutBoxChildren: <Widget>[
+                          SizedBox(
+                          height: 10.0,
+                          ),
+                          Text(
+                            "طور من قبل فريق تقنية المعلومات بمؤسسة الخدمات الإعلامية بمجلس النواب",textDirection: TextDirection.rtl,
+                           ),
 //        Text(
 //          "MTechViral",
 //        ),
-        ],
-                             applicationName: "وكالة أنباء المستقبل",
-                          applicationVersion: "1.0.0",
-                       applicationLegalese: "Apache License 2.0",
+      ],
+                           applicationName: "وكالة أنباء المستقبل",
+                        applicationVersion: "1.0.2",
+                     applicationLegalese: "Apache License 2.0",
     ),
-                         ),
                        ),
                      ),
-                    //  IconButton(
-                    //       icon:Icon(Icons.launch,color: Colors.indigo,) ,
-                    //       iconSize: 30,
-                    //       onPressed: ()=>{
-                    //         _launchURL(context,3)
-                    //       }
-                    //     ),
-                  ],
-                  ),
-              ),
+                   ),
+                  //  IconButton(
+                  //       icon:Icon(Icons.launch,color: Colors.indigo,) ,
+                  //       iconSize: 30,
+                  //       onPressed: ()=>{
+                  //         _launchURL(context,3)
+                  //       }
+                  //     ),
+                ],
+                ),
             ),
+          ),
 
-              ],
-            ),
+            ],
+          ),
 
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavyBar(
-        backgroundColor: Color.fromRGBO(27,38,50,1),
-        selectedIndex: currentIndex,
-        showElevation: true,
-        itemCornerRadius: 8,
-        onItemSelected: (index) => setState(() {
-          currentIndex = index;
-          switch(index) { 
-              case 0: { 
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Whome()));
-              } 
-            break; 
-  
-           case 1: {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>TabBarDemo()));
-            } 
-            break; 
-            
-             case 2: {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Search()));
-            } 
-            break; 
-      
-             default: { 
-      //statements;  
-             }
-           break; 
-               }
-        }),
-        items: [
-          BottomNavyBarItem(
-            icon: Icon(Icons.home),
-            title: Text('الرئيسية'),
-            activeColor: Colors.white38,
-          ),
-          BottomNavyBarItem(
-            icon: Icon(Icons.dashboard),
-            title: Text('التصنيفات'),
-            activeColor: Colors.white,
-          ),
-          BottomNavyBarItem(
-            icon: Icon(Icons.search),
-            title: Text('بحث'),
-            activeColor: Colors.white,
-          ),
-          BottomNavyBarItem(
-            icon: Icon(Icons.info),
-            title: Text('عن التطبيق'),
-            activeColor: Colors.white,
-          ),
         ],
       ),
+//      bottomNavigationBar: BottomNavyBar(
+//        backgroundColor: Color.fromRGBO(27,38,50,1),
+//        selectedIndex: currentIndex,
+//        showElevation: true,
+//        itemCornerRadius: 8,
+//        onItemSelected: (index) => setState(() {
+//          currentIndex = index;
+//          switch(index) {
+//              case 0: {
+//
+//                 Whome();
+//
+//              }
+//            break;
+//
+//           case 1: {
+//              Navigator.push(context, MaterialPageRoute(builder: (context)=>TabBarDemo()));
+//            }
+//            break;
+//
+//             case 2: {
+//              Navigator.push(context, MaterialPageRoute(builder: (context)=>Search()));
+//            }
+//            break;
+//
+//             default: {
+//      //statements;
+//             }
+//           break;
+//               }
+//        }),
+//        items: [
+//          BottomNavyBarItem(
+//            icon: Icon(Icons.home),
+//            title: Text('الرئيسية'),
+//            activeColor: Colors.white38,
+//          ),
+//          BottomNavyBarItem(
+//            icon: Icon(Icons.dashboard),
+//            title: Text('التصنيفات'),
+//            activeColor: Colors.white,
+//          ),
+//          BottomNavyBarItem(
+//            icon: Icon(Icons.search),
+//            title: Text('بحث'),
+//            activeColor: Colors.white,
+//          ),
+//          BottomNavyBarItem(
+//            icon: Icon(Icons.info),
+//            title: Text('عن التطبيق'),
+//            activeColor: Colors.white,
+//          ),
+//        ],
+//      ),
       //  ListView(
         
       //   children: <Widget>[

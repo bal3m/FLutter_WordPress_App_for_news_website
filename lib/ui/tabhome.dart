@@ -63,11 +63,10 @@ class _TabBarDemoState extends State<TabBarDemo> {
       home: DefaultTabController(
         length: 12,
         child: Scaffold(
-          appBar: AppBar(
-             title: Center(child: Text("وكالة انباء المستقبل",textDirection: TextDirection.rtl,)),
-             backgroundColor: Color.fromRGBO(27,38,50,1),
-     
-            bottom: TabBar(
+          appBar: AppBar(title: Center(child: Text('وكالة أنباء المستقبل',textDirection: TextDirection.rtl,)),backgroundColor: Color.fromRGBO(27,38,50,1),
+
+
+          bottom: TabBar(
               isScrollable: true,
               tabs: [
                 Text('عاجل'),
@@ -101,61 +100,61 @@ class _TabBarDemoState extends State<TabBarDemo> {
               Wakala(id: 13,),
             ],
           ),
-        bottomNavigationBar: BottomNavyBar(
-        backgroundColor: Color.fromRGBO(27,38,50,1),
-        selectedIndex: currentIndex,
-        showElevation: true,
-        itemCornerRadius: 8,
-        onItemSelected: (index) => setState(() {
-          currentIndex = index;
-          switch(index) { 
-              case 0: { 
-                Navigator.pushReplacement(ctx, MaterialPageRoute(builder: (ctx)=>Whome()));
-              } 
-            break; 
-  
-          //  case 1: {
-          //     Navigator.push(ctx, MaterialPageRoute(builder: (ctx)=>TabBarDemo()));
-          //   } 
-            break; 
-             case 2: {
-              Navigator.push(ctx, MaterialPageRoute(builder: (ctx)=>Search()));
-            } 
-            break; 
-            case 3: {
-              Navigator.push(ctx, MaterialPageRoute(builder: (ctx)=>Home()));
-            } 
-            break;
-      
-             default: { 
-      //statements;  
-             }
-           break; 
-               }
-        }),
-        items: [
-          BottomNavyBarItem(
-            icon: Icon(Icons.home),
-            title: Text('الرئيسية'),
-            activeColor: Colors.white38,
-          ),
-          BottomNavyBarItem(
-            icon: Icon(Icons.dashboard),
-            title: Text('التصنيفات'),
-            activeColor: Colors.white38,
-          ),
-          BottomNavyBarItem(
-            icon: Icon(Icons.search),
-            title: Text('بحث'),
-            activeColor: Colors.white38,
-          ),
-          BottomNavyBarItem(
-            icon: Icon(Icons.info),
-            title: Text('عن التطبيق'),
-            activeColor: Colors.white38,
-          ),
-        ],
-      ),
+//        bottomNavigationBar: BottomNavyBar(
+//        backgroundColor: Color.fromRGBO(27,38,50,1),
+//        selectedIndex: currentIndex,
+//        showElevation: true,
+//        itemCornerRadius: 8,
+//        onItemSelected: (index) => setState(() {
+//          currentIndex = index;
+//          switch(index) {
+//              case 0: {
+//                Navigator.pushReplacement(ctx, MaterialPageRoute(builder: (ctx)=>Whome()));
+//              }
+//            break;
+//
+//          //  case 1: {
+//          //     Navigator.push(ctx, MaterialPageRoute(builder: (ctx)=>TabBarDemo()));
+//          //   }
+//            break;
+//             case 2: {
+//              Navigator.push(ctx, MaterialPageRoute(builder: (ctx)=>Search()));
+//            }
+//            break;
+//            case 3: {
+//              Navigator.push(ctx, MaterialPageRoute(builder: (ctx)=>Home()));
+//            }
+//            break;
+//
+//             default: {
+//      //statements;
+//             }
+//           break;
+//               }
+//        }),
+//        items: [
+//          BottomNavyBarItem(
+//            icon: Icon(Icons.home),
+//            title: Text('الرئيسية'),
+//            activeColor: Colors.white38,
+//          ),
+//          BottomNavyBarItem(
+//            icon: Icon(Icons.dashboard),
+//            title: Text('التصنيفات'),
+//            activeColor: Colors.white38,
+//          ),
+//          BottomNavyBarItem(
+//            icon: Icon(Icons.search),
+//            title: Text('بحث'),
+//            activeColor: Colors.white38,
+//          ),
+//          BottomNavyBarItem(
+//            icon: Icon(Icons.info),
+//            title: Text('عن التطبيق'),
+//            activeColor: Colors.white38,
+//          ),
+//        ],
+//      ),
         ),
       ),
     );

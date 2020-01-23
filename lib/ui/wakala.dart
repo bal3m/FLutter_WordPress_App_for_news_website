@@ -80,7 +80,7 @@ class _WakalaState extends State<Wakala> {
                   return ListView.builder(
                     scrollDirection: Axis.vertical,
                     itemCount:
-                        postsLenght.length == 0 ? 12 : postsLenght.length,
+                         postsLenght.length== 0 ? 12 : postsLenght.length,
                     itemBuilder: (BuildContext cntx, int index) {
                       Map trend = snapshot.data[index];
                       String title = snapshot.data[index]['title']['rendered'];

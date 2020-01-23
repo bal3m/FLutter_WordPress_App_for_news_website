@@ -3,6 +3,8 @@ import 'package:wakala/ui/introScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:wakala/ui/whome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wakala/main.dart';
+import 'package:wakala/ui/homepage.dart';
 class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -15,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
         if (_seen) {
         Navigator.of(context).pushReplacement(
-            new MaterialPageRoute(builder: (context) => new Whome()));
+            new MaterialPageRoute(builder: (context) => new MyHomePage()));
         } else {
         await prefs.setBool('seen', true);
         Navigator.of(context).pushReplacement(

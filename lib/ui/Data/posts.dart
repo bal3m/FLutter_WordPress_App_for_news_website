@@ -7,7 +7,7 @@ List idCat=new List();
 List find =new List();
 
 Future <List> fetchFromApi() async{
-  final response=await http.get('http://w.almustaqbal.ly/wp-json/wp/v2/posts?_embed&per_page=100',headers:{"Accept":"application/json"});
+  final response=await http.get('http://w.almustaqbal.ly/wp-json/wp/v2/posts',headers:{"Accept":"application/json"});
   api = json.decode(response.body);
   return api;
 }

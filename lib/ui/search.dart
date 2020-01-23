@@ -24,45 +24,13 @@ class _SearchState extends State<Search> {
   @override
  void initState() {
    super.initState();
-//   firebaseMessaging.configure(
-//     onMessage: (Map<String, dynamic> message) {
-//       print('onMessage called: $message');
-//        showDialog(
-//                context: context,
-//                builder: (context) => AlertDialog(
-//                        content: ListTile(
-//                        title: Text(message['notification']['title']),
-//                        subtitle: Text(message['notification']['body']),
-//                        ),
-//                        actions: <Widget>[
-//                        FlatButton(
-//                            child: Text('Ok'),
-//                            onPressed: () => Navigator.of(context).pop(),
-//                        ),
-//                    ],
-//                ),
-//            );
-//
-//     },
-//     onResume: (Map<String, dynamic> message) {
-//       print('onResume called: $message');
-//     },
-//     onLaunch: (Map<String, dynamic> message) {
-//       print('onLaunch called: $message');
-//     },
-//   );
-//   firebaseMessaging.requestNotificationPermissions(
-//        const IosNotificationSettings(sound: true, badge: true, alert: true));
-//   firebaseMessaging.getToken().then((token){
-//   print('FCM Token: $token');
-// });
  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
         child: Padding(
-          padding: EdgeInsets.only(top: 30.0, left: 10.0, right: 10.0),
+          padding: EdgeInsets.only(top: 35.0, left: 10.0, right: 10.0),
           child: Card(
             elevation: 6.0,
             child: Container(
@@ -125,61 +93,61 @@ class _SearchState extends State<Search> {
           Navigator.push(context, MaterialPageRoute(builder: (context)=> Result(search: _searchController.text.toString(),)))
         } ,
       ),
-      bottomNavigationBar: BottomNavyBar(
-        backgroundColor: Color.fromRGBO(27,38,50,1),
-        selectedIndex: currentIndex,
-        showElevation: true,
-        itemCornerRadius: 8,
-        onItemSelected: (index) => setState(() {
-          currentIndex = index;
-          switch(index) { 
-              case 0: { 
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Whome()));
-              } 
-            break; 
-  
-           case 1: {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>TabBarDemo()));
-            } 
-            break; 
-            
-            //  case 2: {
-            //   Navigator.push(context, MaterialPageRoute(builder: (context)=>Search()));
-            // } 
-            // break; 
-            case 3: {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
-            } 
-            break;
-             default: { 
-      //statements;  
-             }
-           break; 
-               }
-        }),
-        items: [
-          BottomNavyBarItem(
-            icon: Icon(Icons.home),
-            title: Text('الرئيسية'),
-            activeColor: Colors.white38,
-          ),
-          BottomNavyBarItem(
-            icon: Icon(Icons.dashboard),
-            title: Text('التصنيفات'),
-            activeColor: Colors.white,
-          ),
-          BottomNavyBarItem(
-            icon: Icon(Icons.search),
-            title: Text('بحث'),
-            activeColor: Colors.white,
-          ),
-          BottomNavyBarItem(
-            icon: Icon(Icons.info),
-            title: Text('عن التطبيق'),
-            activeColor: Colors.white,
-          ),
-        ],
-      ),
+//      bottomNavigationBar: BottomNavyBar(
+//        backgroundColor: Color.fromRGBO(27,38,50,1),
+//        selectedIndex: currentIndex,
+//        showElevation: true,
+//        itemCornerRadius: 8,
+//        onItemSelected: (index) => setState(() {
+//          currentIndex = index;
+//          switch(index) {
+//              case 0: {
+//                Navigator.push(context, MaterialPageRoute(builder: (context)=>Whome()));
+//              }
+//            break;
+//
+//           case 1: {
+//              Navigator.push(context, MaterialPageRoute(builder: (context)=>TabBarDemo()));
+//            }
+//            break;
+//
+//            //  case 2: {
+//            //   Navigator.push(context, MaterialPageRoute(builder: (context)=>Search()));
+//            // }
+//            // break;
+//            case 3: {
+//              Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
+//            }
+//            break;
+//             default: {
+//      //statements;
+//             }
+//           break;
+//               }
+//        }),
+//        items: [
+//          BottomNavyBarItem(
+//            icon: Icon(Icons.home),
+//            title: Text('الرئيسية'),
+//            activeColor: Colors.white38,
+//          ),
+//          BottomNavyBarItem(
+//            icon: Icon(Icons.dashboard),
+//            title: Text('التصنيفات'),
+//            activeColor: Colors.white,
+//          ),
+//          BottomNavyBarItem(
+//            icon: Icon(Icons.search),
+//            title: Text('بحث'),
+//            activeColor: Colors.white,
+//          ),
+//          BottomNavyBarItem(
+//            icon: Icon(Icons.info),
+//            title: Text('عن التطبيق'),
+//            activeColor: Colors.white,
+//          ),
+//        ],
+//      ),
     ); 
   }
   Future<bool> _onBackPressed() {
