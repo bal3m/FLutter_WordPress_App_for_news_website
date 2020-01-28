@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
   "9a65791b-f885-49ad-97c8-dec2b4a0dfea",
   iOSSettings: {
     OSiOSSettings.autoPrompt: false,
-    OSiOSSettings.inAppLaunchUrl: true
+    OSiOSSettings.inAppLaunchUrl: true,
   }
 );
 OneSignal.shared.setInFocusDisplayType(OSNotificationDisplayType.notification);

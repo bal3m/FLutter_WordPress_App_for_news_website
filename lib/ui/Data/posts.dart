@@ -22,7 +22,7 @@ Future <List> fetchCategory() async {
   return cat;
 }
 Future<List> fetchByCat(int id) async {
-final res =await http.get('https://w.almustaqbal.ly/wp-json/wp/v2/posts?categories=$id&per_page=50');
+final res =await http.get('https://w.almustaqbal.ly/wp-json/wp/v2/posts?categories=$id&per_page=25');
   idCat=json.decode(res.body);
   return idCat;
 }

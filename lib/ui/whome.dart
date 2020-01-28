@@ -160,7 +160,7 @@ _showVersionDialog(context) async {
       String message =
           "هناك اصدار أحدث متوفر لهذا التطبيق";
       String btnLabel = "تحديث الآن";
-      String btnLabelCancel = "لاحقا";
+      String btnLabelCancel = "خروج";
       return Platform.isIOS
           ? new CupertinoAlertDialog(
         title: Text(title),
@@ -172,24 +172,27 @@ _showVersionDialog(context) async {
           ),
           FlatButton(
             child: Text(btnLabelCancel),
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => exit(0),
           ),
         ],
       )
-          : new AlertDialog(
+          : WillPopScope(
+        onWillPop: close,
+            child: new AlertDialog(
         title: Text(title,textDirection: TextDirection.rtl,),
         content: Text(message,textDirection: TextDirection.rtl),
         actions: <Widget>[
-          FlatButton(
-            child: Text(btnLabel,textDirection: TextDirection.rtl),
-            onPressed: () => _launchURL(PLAY_STORE_URL),
-          ),
-          FlatButton(
-            child: Text(btnLabelCancel,textDirection: TextDirection.rtl),
-            onPressed: () => Navigator.pop(context),
-          ),
+            FlatButton(
+              child: Text(btnLabel,textDirection: TextDirection.rtl),
+              onPressed: () => _launchURL(PLAY_STORE_URL),
+            ),
+            FlatButton(
+              child: Text(btnLabelCancel,textDirection: TextDirection.rtl),
+              onPressed: () => exit(0),
+            ),
         ],
-      );
+      ),
+          );
     },
   );
 }
@@ -200,4 +203,7 @@ _launchURL(String url) async {
   } else {
     throw 'Could not launch $url';
   }
+}
+Future<bool> close(){
+  exit(0);
 }

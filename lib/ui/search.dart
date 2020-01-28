@@ -80,11 +80,8 @@ class _SearchState extends State<Search> {
           60.0,
         ),
       ),
-      body: WillPopScope(
-        onWillPop: _onBackPressed,
-        child: Center(
-          child: Text("قم بكتابة ما تريد البحث عنه لمشاهدة النتائج"),
-        ),
+      body: Center(
+        child: Text("قم بكتابة ما تريد البحث عنه لمشاهدة النتائج"),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.search),

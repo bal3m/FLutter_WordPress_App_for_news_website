@@ -34,12 +34,12 @@ class ViewPost extends StatelessWidget{
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
-                      child: Text(parse(title.toString()).documentElement.text,textDirection: TextDirection.rtl,style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20 ),textAlign: TextAlign.center,),
+                      child: Text(parse(title.toString()).documentElement.text,textDirection: TextDirection.rtl,style: TextStyle(color:Colors.black,fontWeight: FontWeight.bold,fontSize: 20 ),textAlign: TextAlign.center,),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
-                    child: Text(parse(content.toString()).documentElement.text,textDirection: TextDirection.rtl,),
+                    child: Text(parse(content.toString()).documentElement.text,textDirection: TextDirection.rtl,textAlign: TextAlign.justify,style: TextStyle(fontSize: 16,),),
                   ),
                 ],
               ),

@@ -61,43 +61,44 @@ class _TabBarDemoState extends State<TabBarDemo> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: DefaultTabController(
-        length: 12,
+        length: 11,
         child: Scaffold(
           appBar: AppBar(title: Center(child: Text('وكالة أنباء المستقبل',textDirection: TextDirection.rtl,)),backgroundColor: Color.fromRGBO(27,38,50,1),
 
 
           bottom: TabBar(
+            indicatorColor: Colors.amber,
               isScrollable: true,
               tabs: [
                 Text('عاجل'),
-                Text('سياسي دولي'),
-                Text('سياسي محلي'),
                 Text('مجلس النواب'),
-                Text('اقتصاد دولي'),
+                Text('سياسة محلية'),
+                Text('سياسة دولية'),
                 Text('اقتصاد محلي'),
-                Text('انفوقراف'),
+                Text('اقتصاد دولي'),
+                Text('صور'),
                 Text('تكنولوجيا'),
-                Text('رياضي دولي'),
-                Text('رياضي محلي'),
+                Text('رياضة دولية'),
+                Text('رياضة محلية'),
                 Text('فنون و ثقافة'),
-                Text('وكالة انباء المستقبل'),
+//                Text('وكالة انباء المستقبل'),
               ],
             ),
           ),
           body: TabBarView(
             children: [
               Wakala(id: 11,),
-              Wakala(id: 1,),
-              Wakala(id: 3,),
               Wakala(id:10 ,),
-              Wakala(id: 9,),
+              Wakala(id: 3,),
+              Wakala(id: 1,),
               Wakala(id: 4,),
+              Wakala(id: 9,),
               Wakala(id: 12,),
               Wakala(id: 8,),
               Wakala(id: 6,),
               Wakala(id: 5,),
               Wakala(id: 7,),
-              Wakala(id: 13,),
+//              Wakala(id: 13,),
             ],
           ),
 //        bottomNavigationBar: BottomNavyBar(

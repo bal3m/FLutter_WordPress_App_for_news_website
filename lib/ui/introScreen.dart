@@ -1,6 +1,7 @@
 import 'package:intro_slider/intro_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_slider/slide_object.dart';
+import 'package:wakala/ui/homepage.dart';
 import 'package:wakala/ui/whome.dart';
 import 'package:wakala/util/colors.dart';
 class Intro extends StatefulWidget {
@@ -53,7 +54,7 @@ class _IntroState extends State<Intro> {
       new Slide(
         title: "حقوق النشر",
         description:
-        "هذا التطبيق يتبع لمؤسسة الخدمات الإعلامية بمجلس النواب",
+        "هذا التطبيق يتبع لمؤسسة الخدمات الإعلامية بمجلس النواب الليبي",
         pathImage: "images/mof.png",
         backgroundColor: HexColor('#011640'),
       ),
@@ -71,7 +72,7 @@ class _IntroState extends State<Intro> {
 
   void onDonePress() {
     Navigator.of(context).pushReplacement(
-            new MaterialPageRoute(builder: (context) => new Whome()));
+            new MaterialPageRoute(builder: (context) => new MyHomePage()));
   }
 
   @override
