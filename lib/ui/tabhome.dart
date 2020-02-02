@@ -63,7 +63,7 @@ class _TabBarDemoState extends State<TabBarDemo> {
       home: DefaultTabController(
         length: 11,
         child: Scaffold(
-          appBar: AppBar(title: Center(child: Text('وكالة أنباء المستقبل',textDirection: TextDirection.rtl,)),backgroundColor: Color.fromRGBO(27,38,50,1),
+          appBar: AppBar(title: Center(child: Text('وكالة أنباء المستقبل',textDirection: TextDirection.rtl,style: TextStyle(fontFamily: 'Tajawal'),)),backgroundColor: Color.fromRGBO(27,38,50,1),
 
 
           bottom: TabBar(

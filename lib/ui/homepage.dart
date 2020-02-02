@@ -38,6 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     body: SizedBox.expand(
         child: PageView(
+          physics:new NeverScrollableScrollPhysics(),
           controller: _pageController,
           onPageChanged: (index) {
             setState(() => _currentIndex = index);

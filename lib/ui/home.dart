@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
     devise_size = MediaQuery.of(context).size;
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(title: Center(child: Text('وكالة أنباء المستقبل',textDirection: TextDirection.rtl,)),backgroundColor: Color.fromRGBO(27,38,50,1),),
+      appBar: AppBar(title: Center(child: Text('وكالة أنباء المستقبل',textDirection: TextDirection.rtl,style: TextStyle(fontFamily: 'Tajawal'),)),backgroundColor: Color.fromRGBO(27,38,50,1),),
 
       body:  ListView(
         children: <Widget>[
@@ -67,7 +67,7 @@ class _HomeState extends State<Home> {
 //        ),
       ],
                            applicationName: "وكالة أنباء المستقبل",
-                        applicationVersion: "1.0.3",
+                        applicationVersion: "1.0.4",
 //                     applicationLegalese: "Apache License 2.0",
     ),
                        ),

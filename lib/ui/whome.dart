@@ -16,6 +16,7 @@ import 'Data/posts.dart';
 import 'package:html/parser.dart';
 import 'widgets/slide_item.dart';
 import 'viewpost.dart';
+import 'openedNotification.dart';
 import 'viewbycat.dart';
 class Whome extends StatefulWidget {
   @override
@@ -23,6 +24,7 @@ class Whome extends StatefulWidget {
 }
 
 class _WhomeState extends State<Whome> {
+  List x=new List();
   String imgurl='http://w.almustaqbal.ly/wp-content/uploads/2019/06/64627701_442078543247525_3828041687351951360_n.png';
 //   FirebaseMessaging firebaseMessaging = new FirebaseMessaging();
   @override
@@ -37,6 +39,10 @@ class _WhomeState extends State<Whome> {
     OneSignal.shared.setNotificationReceivedHandler((OSNotification notification) {
     });
     OneSignal.shared.setNotificationOpenedHandler((OSNotificationOpenedResult result) {
+//      print("action: ${result.action.type}-${result.action.actionId}, notification: ${result.notification.jsonRepresentation()}");
+//      x.add(result.notification.jsonRepresentation());
+//      print(x[0]['payload']['alert']);
+//      Navigator.push(context, MaterialPageRoute(builder: (context)=> OpenedNotification(title: x[0]['payload']['alert'],)));
     });
 //
     PageController _pageController;
@@ -48,44 +54,123 @@ class _WhomeState extends State<Whome> {
     // TODO: implement build
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: AppBar(title: Center(child: Text('وكالة أنباء المستقبل',textDirection: TextDirection.rtl,)),backgroundColor: Color.fromRGBO(27,38,50,1),),
+      appBar: AppBar(title: Center(child: Text('وكالة أنباء المستقبل',textDirection: TextDirection.rtl,style: TextStyle(fontFamily: 'Tajawal'),)),backgroundColor: Color.fromRGBO(27,38,50,1),),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10.0,0,10.0,0),
-        child:Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: FutureBuilder(
-          future:fetchFromApi(),
-          builder: (context,snapshot){
-        if(snapshot.hasData){
-          return ListView.builder(
-            scrollDirection: Axis.vertical,
-           itemCount:10,
-            itemBuilder: (BuildContext context ,int index){
-              Map trend =snapshot.data[index];
-              String title= snapshot.data[index]['title']['rendered'];
-              String image= snapshot.data[index]['jetpack_featured_media_url'];
-              String content=snapshot.data[index]['content']['rendered'];
-              String img=trend['jetpack_featured_media_url'];
+        child:ListView(
+          children: <Widget>[
+            SizedBox(height: 20.0),
 
-              return InkWell(
-                onTap: ()=>{
-                 Navigator.push(context, MaterialPageRoute(builder: (context)=> ViewPost(title: title,content: content,image: image,)))
-                },
-                child:  SlideItem(
-                title: parse(trend['title']['rendered'].toString()).documentElement.text,
-                img: trend['jetpack_featured_media_url']==''?imgurl:trend['jetpack_featured_media_url'],
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          textDirection: TextDirection.rtl,
+          children: <Widget>[
+            Text(
+              "مقالات مثبتة",
+              textDirection: TextDirection.rtl,
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                fontFamily: 'Tajawal',
+                fontSize: 23,
+                fontWeight: FontWeight.w800,
               ),
-              );
-            },
-          );
-        }
-        return Center(child: CircularProgressIndicator(
-          backgroundColor: Color.fromRGBO(212, 175, 55, 1),
-          valueColor: new AlwaysStoppedAnimation<Color>(Color.fromRGBO(27,38,50,1)),
-        ));
-          }
+            ),
+          ]
         ),
+            SizedBox(height: 10.0),
+
+            Container(
+              height: MediaQuery.of(context).size.height/2.4,
+              width: MediaQuery.of(context).size.width,
+              child: FutureBuilder(
+                  future:pinned(),
+                  builder: (context,snapshot){
+                    if(snapshot.hasData){
+                      return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount:3,
+                        itemBuilder: (BuildContext context ,int index){
+                          Map trend =snapshot.data[index];
+                          String title= snapshot.data[index]['title']['rendered'];
+                          String image= snapshot.data[index]['jetpack_featured_media_url'];
+                          String content=snapshot.data[index]['content']['rendered'];
+                          String img=trend['jetpack_featured_media_url'];
+                          return InkWell(
+                            onTap: ()=>{
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=> ViewPost(title: title,content: content,image: image,)))
+                            },
+                            child:  SlideItem(
+                              title: parse(trend['title']['rendered'].toString()).documentElement.text,
+                              img: trend['jetpack_featured_media_url']==''?imgurl:trend['jetpack_featured_media_url'],
+                            ),
+                          );
+                        },
+                      );
+                    }
+                    return Center(child: CircularProgressIndicator(
+                      backgroundColor: Color.fromRGBO(212, 175, 55, 1),
+                      valueColor: new AlwaysStoppedAnimation<Color>(Color.fromRGBO(27,38,50,1)),
+                    ));
+                  }
+              ),
+            ),
+            SizedBox(height: 10,),
+            Row(
+                textDirection: TextDirection.rtl,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    "آخر الأخبار",
+                    textDirection: TextDirection.rtl,
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      fontFamily: 'Tajawal',
+                      fontSize: 23,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                ]
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Container(
+              height: MediaQuery.of(context).size.height/2.4,
+              width: MediaQuery.of(context).size.width,
+              child: FutureBuilder(
+                  future:fetchFromApi(),
+                  builder: (context,snapshot){
+                    if(snapshot.hasData){
+                      return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount:10,
+                        itemBuilder: (BuildContext context ,int index){
+                          Map trend =snapshot.data[index];
+                          String title= snapshot.data[index]['title']['rendered'];
+                          String image= snapshot.data[index]['jetpack_featured_media_url'];
+                          String content=snapshot.data[index]['content']['rendered'];
+                          String img=trend['jetpack_featured_media_url'];
+
+                          return InkWell(
+                            onTap: ()=>{
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=> ViewPost(title: title,content: content,image: image,)))
+                            },
+                            child:  SlideItem(
+                              title: parse(trend['title']['rendered'].toString()).documentElement.text,
+                              img: trend['jetpack_featured_media_url']==''?imgurl:trend['jetpack_featured_media_url'],
+                            ),
+                          );
+                        },
+                      );
+                    }
+                    return Center(child: CircularProgressIndicator(
+                      backgroundColor: Color.fromRGBO(212, 175, 55, 1),
+                      valueColor: new AlwaysStoppedAnimation<Color>(Color.fromRGBO(27,38,50,1)),
+                    ));
+                  }
+              ),
+          ),
+            ),
+            ],
         ),
       ),
 
