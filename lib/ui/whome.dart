@@ -18,27 +18,30 @@ import 'widgets/slide_item.dart';
 import 'viewpost.dart';
 import 'openedNotification.dart';
 import 'viewbycat.dart';
+
 class Whome extends StatefulWidget {
   @override
   _WhomeState createState() => _WhomeState();
 }
 
 class _WhomeState extends State<Whome> {
-  List x=new List();
-  String imgurl='http://w.almustaqbal.ly/wp-content/uploads/2019/06/64627701_442078543247525_3828041687351951360_n.png';
+  List x = new List();
+  String imgurl =
+      'http://w.almustaqbal.ly/wp-content/uploads/2019/06/64627701_442078543247525_3828041687351951360_n.png';
 //   FirebaseMessaging firebaseMessaging = new FirebaseMessaging();
   @override
- void initState() {
+  void initState() {
     try {
       versionCheck(context);
     } catch (e) {
       print(e);
     }
-    OneSignal. shared .init ( "9a65791b-f885-49ad-97c8-dec2b4a0dfea");
-    OneSignal. shared .setInFocusDisplayType (OSNotificationDisplayType.none);
-    OneSignal.shared.setNotificationReceivedHandler((OSNotification notification) {
-    });
-    OneSignal.shared.setNotificationOpenedHandler((OSNotificationOpenedResult result) {
+    OneSignal.shared.init("9a65791b-f885-49ad-97c8-dec2b4a0dfea");
+    OneSignal.shared.setInFocusDisplayType(OSNotificationDisplayType.none);
+    OneSignal.shared
+        .setNotificationReceivedHandler((OSNotification notification) {});
+    OneSignal.shared
+        .setNotificationOpenedHandler((OSNotificationOpenedResult result) {
 //      print("action: ${result.action.type}-${result.action.actionId}, notification: ${result.notification.jsonRepresentation()}");
 //      x.add(result.notification.jsonRepresentation());
 //      print(x[0]['payload']['alert']);
@@ -46,75 +49,99 @@ class _WhomeState extends State<Whome> {
     });
 //
     PageController _pageController;
-   super.initState();
+    super.initState();
 //
- }
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: AppBar(title: Center(child: Text('وكالة أنباء المستقبل',textDirection: TextDirection.rtl,style: TextStyle(fontFamily: 'Tajawal'),)),backgroundColor: Color.fromRGBO(27,38,50,1),),
+      appBar: AppBar(
+        title: Center(
+            child: Text(
+          'وكالة أنباء المستقبل',
+          textDirection: TextDirection.rtl,
+          style: TextStyle(fontFamily: 'Tajawal'),
+        )),
+        backgroundColor: Color.fromRGBO(27, 38, 50, 1),
+      ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(10.0,0,10.0,0),
-        child:ListView(
+        padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
+        child: ListView(
           children: <Widget>[
             SizedBox(height: 20.0),
-
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          textDirection: TextDirection.rtl,
-          children: <Widget>[
-            Text(
-              "مقالات مثبتة",
-              textDirection: TextDirection.rtl,
-              textAlign: TextAlign.right,
-              style: TextStyle(
-                fontFamily: 'Tajawal',
-                fontSize: 23,
-                fontWeight: FontWeight.w800,
-              ),
-            ),
-          ]
-        ),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                textDirection: TextDirection.rtl,
+                children: <Widget>[
+                  Text(
+                    "مقالات مثبتة",
+                    textDirection: TextDirection.rtl,
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      fontFamily: 'Tajawal',
+                      fontSize: 23,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                ]),
             SizedBox(height: 10.0),
-
             Container(
-              height: MediaQuery.of(context).size.height/2.4,
+              height: MediaQuery.of(context).size.height / 2.4,
               width: MediaQuery.of(context).size.width,
               child: FutureBuilder(
-                  future:pinned(),
-                  builder: (context,snapshot){
-                    if(snapshot.hasData){
+                  future: pinned(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
                       return ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount:3,
-                        itemBuilder: (BuildContext context ,int index){
-                          Map trend =snapshot.data[index];
-                          String title= snapshot.data[index]['title']['rendered'];
-                          String image= snapshot.data[index]['jetpack_featured_media_url'];
-                          String content=snapshot.data[index]['content']['rendered'];
-                          String img=trend['jetpack_featured_media_url'];
+                        itemCount: 7,
+                        itemBuilder: (BuildContext context, int index) {
+                          Map trend = snapshot.data[index];
+                          String title =
+                              snapshot.data[index]['title']['rendered'];
+                          String image = snapshot.data[index]
+                              ['jetpack_featured_media_url'];
+                          String content =
+                              snapshot.data[index]['content']['rendered'];
+                          String img = trend['jetpack_featured_media_url'];
                           return InkWell(
-                            onTap: ()=>{
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> ViewPost(title: title,content: content,image: image,)))
+                            onTap: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ViewPost(
+                                            title: title,
+                                            content: content,
+                                            image: image,
+                                          )))
                             },
-                            child:  SlideItem(
-                              title: parse(trend['title']['rendered'].toString()).documentElement.text,
-                              img: trend['jetpack_featured_media_url']==''?imgurl:trend['jetpack_featured_media_url'],
+                            child: SlideItem(
+                              title:
+                                  parse(trend['title']['rendered'].toString())
+                                      .documentElement
+                                      .text,
+                              img: trend['jetpack_featured_media_url'] == ''
+                                  ? imgurl
+                                  : trend['jetpack_featured_media_url'],
                             ),
                           );
                         },
                       );
                     }
-                    return Center(child: CircularProgressIndicator(
+                    return Center(
+                        child: CircularProgressIndicator(
                       backgroundColor: Color.fromRGBO(212, 175, 55, 1),
-                      valueColor: new AlwaysStoppedAnimation<Color>(Color.fromRGBO(27,38,50,1)),
+                      valueColor: new AlwaysStoppedAnimation<Color>(
+                          Color.fromRGBO(27, 38, 50, 1)),
                     ));
-                  }
-              ),
+                  }),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Row(
                 textDirection: TextDirection.rtl,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -129,70 +156,96 @@ class _WhomeState extends State<Whome> {
                       fontWeight: FontWeight.w800,
                     ),
                   ),
-                ]
-            ),
+                ]),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Container(
-              height: MediaQuery.of(context).size.height/2.4,
-              width: MediaQuery.of(context).size.width,
-              child: FutureBuilder(
-                  future:fetchFromApi(),
-                  builder: (context,snapshot){
-                    if(snapshot.hasData){
-                      return ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount:10,
-                        itemBuilder: (BuildContext context ,int index){
-                          Map trend =snapshot.data[index];
-                          String title= snapshot.data[index]['title']['rendered'];
-                          String image= snapshot.data[index]['jetpack_featured_media_url'];
-                          String content=snapshot.data[index]['content']['rendered'];
-                          String img=trend['jetpack_featured_media_url'];
+                height: MediaQuery.of(context).size.height / 2.4,
+                width: MediaQuery.of(context).size.width,
+                child: FutureBuilder(
+                    future: fetchFromApi(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 10,
+                          itemBuilder: (BuildContext context, int index) {
+                            Map trend = snapshot.data[index];
+                            String title =
+                                snapshot.data[index]['title']['rendered'];
+                            String image = snapshot.data[index]
+                                ['jetpack_featured_media_url'];
+                            String content =
+                                snapshot.data[index]['content']['rendered'];
+                            String img = trend['jetpack_featured_media_url'];
 
-                          return InkWell(
-                            onTap: ()=>{
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> ViewPost(title: title,content: content,image: image,)))
-                            },
-                            child:  SlideItem(
-                              title: parse(trend['title']['rendered'].toString()).documentElement.text,
-                              img: trend['jetpack_featured_media_url']==''?imgurl:trend['jetpack_featured_media_url'],
-                            ),
-                          );
-                        },
-                      );
-                    }
-                    return Center(child: CircularProgressIndicator(
-                      backgroundColor: Color.fromRGBO(212, 175, 55, 1),
-                      valueColor: new AlwaysStoppedAnimation<Color>(Color.fromRGBO(27,38,50,1)),
-                    ));
-                  }
+                            return InkWell(
+                              onTap: () => {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ViewPost(
+                                              title: title,
+                                              content: content,
+                                              image: image,
+                                            )))
+                              },
+                              child: SlideItem(
+                                title:
+                                    parse(trend['title']['rendered'].toString())
+                                        .documentElement
+                                        .text,
+                                img: trend['jetpack_featured_media_url'] == ''
+                                    ? imgurl
+                                    : trend['jetpack_featured_media_url'],
+                              ),
+                            );
+                          },
+                        );
+                      }
+                      return Center(
+                          child: CircularProgressIndicator(
+                        backgroundColor: Color.fromRGBO(212, 175, 55, 1),
+                        valueColor: new AlwaysStoppedAnimation<Color>(
+                            Color.fromRGBO(27, 38, 50, 1)),
+                      ));
+                    }),
               ),
-          ),
             ),
-            ],
+          ],
         ),
       ),
-
     );
-    
   }
+
   Future<bool> _onBackPressed() {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('هل أنت متأكد؟',textDirection: TextDirection.rtl,),
-            content: Text('أنت على وشك إغلاق التطبيق!!',textDirection: TextDirection.rtl,),
+            title: Text(
+              'هل أنت متأكد؟',
+              textDirection: TextDirection.rtl,
+            ),
+            content: Text(
+              'أنت على وشك إغلاق التطبيق!!',
+              textDirection: TextDirection.rtl,
+            ),
             actions: <Widget>[
               FlatButton(
-                child: Text('تراجع',textDirection: TextDirection.rtl,),
+                child: Text(
+                  'تراجع',
+                  textDirection: TextDirection.rtl,
+                ),
                 onPressed: () {
                   Navigator.of(context).pop(false);
                 },
               ),
               FlatButton(
-                child: Text('تأكيد',textDirection: TextDirection.rtl,),
+                child: Text(
+                  'تأكيد',
+                  textDirection: TextDirection.rtl,
+                ),
                 onPressed: () {
                   exit(0);
                 },
@@ -202,6 +255,7 @@ class _WhomeState extends State<Whome> {
         });
   }
 }
+
 const APP_STORE_URL =
     'https://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftwareUpdate?id=YOUR-APP-ID&mt=8';
 const PLAY_STORE_URL =
@@ -235,6 +289,7 @@ versionCheck(context) async {
         'used');
   }
 }
+
 //Show Dialog to force user to update
 _showVersionDialog(context) async {
   await showDialog<String>(
@@ -242,42 +297,45 @@ _showVersionDialog(context) async {
     barrierDismissible: false,
     builder: (BuildContext context) {
       String title = " تحديث متوفر";
-      String message =
-          "هناك اصدار أحدث متوفر لهذا التطبيق";
+      String message = "هناك اصدار أحدث متوفر لهذا التطبيق";
       String btnLabel = "تحديث الآن";
       String btnLabelCancel = "خروج";
       return Platform.isIOS
           ? new CupertinoAlertDialog(
-        title: Text(title),
-        content: Text(message),
-        actions: <Widget>[
-          FlatButton(
-            child: Text(btnLabel),
-            onPressed: () => _launchURL(APP_STORE_URL),
-          ),
-          FlatButton(
-            child: Text(btnLabelCancel),
-            onPressed: () => exit(0),
-          ),
-        ],
-      )
+              title: Text(title),
+              content: Text(message),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text(btnLabel),
+                  onPressed: () => _launchURL(APP_STORE_URL),
+                ),
+                FlatButton(
+                  child: Text(btnLabelCancel),
+                  onPressed: () => exit(0),
+                ),
+              ],
+            )
           : WillPopScope(
-        onWillPop: close,
-            child: new AlertDialog(
-        title: Text(title,textDirection: TextDirection.rtl,),
-        content: Text(message,textDirection: TextDirection.rtl),
-        actions: <Widget>[
-            FlatButton(
-              child: Text(btnLabel,textDirection: TextDirection.rtl),
-              onPressed: () => _launchURL(PLAY_STORE_URL),
-            ),
-            FlatButton(
-              child: Text(btnLabelCancel,textDirection: TextDirection.rtl),
-              onPressed: () => exit(0),
-            ),
-        ],
-      ),
-          );
+              onWillPop: close,
+              child: new AlertDialog(
+                title: Text(
+                  title,
+                  textDirection: TextDirection.rtl,
+                ),
+                content: Text(message, textDirection: TextDirection.rtl),
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text(btnLabel, textDirection: TextDirection.rtl),
+                    onPressed: () => _launchURL(PLAY_STORE_URL),
+                  ),
+                  FlatButton(
+                    child:
+                        Text(btnLabelCancel, textDirection: TextDirection.rtl),
+                    onPressed: () => exit(0),
+                  ),
+                ],
+              ),
+            );
     },
   );
 }
@@ -289,6 +347,7 @@ _launchURL(String url) async {
     throw 'Could not launch $url';
   }
 }
-Future<bool> close(){
+
+Future<bool> close() {
   exit(0);
 }

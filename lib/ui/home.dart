@@ -9,85 +9,107 @@ import 'package:wakala/ui/searchResult.dart';
 import 'package:wakala/ui/tabhome.dart';
 import 'package:wakala/ui/whome.dart';
 import "Data/data.dart";
+
 //import 'package:url_launcher/url_launcher.dart';
-class Home extends StatefulWidget{
+class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
   Size devise_size;
-  int currentIndex=3;
+  int currentIndex = 3;
 
-  int r=212;
+  int r = 212;
 
-  int g=175;
+  int g = 175;
 
-  int b=55;
+  int b = 55;
   @override
   Widget build(BuildContext context) {
     devise_size = MediaQuery.of(context).size;
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(title: Center(child: Text('وكالة أنباء المستقبل',textDirection: TextDirection.rtl,style: TextStyle(fontFamily: 'Tajawal'),)),backgroundColor: Color.fromRGBO(27,38,50,1),),
+      appBar: AppBar(
+        title: Center(
+            child: Text(
+          'وكالة أنباء المستقبل',
+          textDirection: TextDirection.rtl,
+          style: TextStyle(fontFamily: 'Tajawal'),
+        )),
+        backgroundColor: Color.fromRGBO(27, 38, 50, 1),
+      ),
 
-      body:  ListView(
+      body: ListView(
         children: <Widget>[
           Column(
             children: <Widget>[
-              Image.asset(data[3]['image'],height: 200,width: 300,),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
-                child: Column(
-                children: <Widget>[
-                   Text(data[3]['content'],style:TextStyle(fontSize:18,),textDirection: TextDirection.rtl,textAlign: TextAlign.center, ),
-                   Padding(
-                     padding: const EdgeInsets.all(15.0),
-                     child: Center(
-                       child: Padding(
-                         padding: const EdgeInsets.fromLTRB(75, 0, 0, 0),
-                         child: AboutListTile(
-
-                         applicationIcon:Image.asset("images/icon.png",height: 80,width: 50,),
+              Image.asset(
+                data[3]['image'],
+                height: 200,
+                width: 300,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        data[3]['content'],
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                        textDirection: TextDirection.rtl,
+                        textAlign: TextAlign.center,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(75, 0, 0, 0),
+                            child: AboutListTile(
+                              applicationIcon: Image.asset(
+                                "images/icon.png",
+                                height: 80,
+                                width: 50,
+                              ),
 
 //      icon: FlutterLogo(
 //        colors: Colors.yellow,
 //      ),
-                          aboutBoxChildren: <Widget>[
-                          SizedBox(
-                          height: 10.0,
-                          ),
-                          Text(
-                            "طور من قبل فريق تقنية المعلومات بمؤسسة الخدمات الإعلامية بمجلس النواب",textDirection: TextDirection.rtl,
-                           ),
+                              aboutBoxChildren: <Widget>[
+                                SizedBox(
+                                  height: 10.0,
+                                ),
+                                Text(
+                                  "طور من قبل فريق تقنية المعلومات بمؤسسة الخدمات الإعلامية بمجلس النواب",
+                                  textDirection: TextDirection.rtl,
+                                ),
 //        Text(
 //          "MTechViral",
 //        ),
-      ],
-                           applicationName: "وكالة أنباء المستقبل",
-                        applicationVersion: "1.0.4",
+                              ],
+                              applicationName: "وكالة أنباء المستقبل",
+                              applicationVersion: "1.0.5",
 //                     applicationLegalese: "Apache License 2.0",
-    ),
-                       ),
-                     ),
-                   ),
-                  //  IconButton(
-                  //       icon:Icon(Icons.launch,color: Colors.indigo,) ,
-                  //       iconSize: 30,
-                  //       onPressed: ()=>{
-                  //         _launchURL(context,3)
-                  //       }
-                  //     ),
-                ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      //  IconButton(
+                      //       icon:Icon(Icons.launch,color: Colors.indigo,) ,
+                      //       iconSize: 30,
+                      //       onPressed: ()=>{
+                      //         _launchURL(context,3)
+                      //       }
+                      //     ),
+                    ],
+                  ),
                 ),
-            ),
-          ),
-
+              ),
             ],
           ),
-
         ],
       ),
 //      bottomNavigationBar: BottomNavyBar(
@@ -145,7 +167,7 @@ class _HomeState extends State<Home> {
 //        ],
 //      ),
       //  ListView(
-        
+
       //   children: <Widget>[
       //     // Image.asset("images/12.png",height: 180, width: 500),
       //     Padding(
@@ -174,16 +196,15 @@ class _HomeState extends State<Home> {
       //                   Container(
       //                     child: Image.asset(d['image'],height: 100,width: 150,),
       //                   ),
-                        
+
       //                   // Container(
       //                   //   child: Text(d["content"],style:TextStyle(fontSize:14,),textDirection: TextDirection.rtl,textAlign: TextAlign.center,),
       //                   // ),
-                      
 
       //                 ],
       //               ),
       //             ),
-      //             ) 
+      //             )
       //           );
       //         }
       //         ) ,
@@ -204,22 +225,35 @@ class _HomeState extends State<Home> {
       // ),
     );
   }
+
   Future<bool> _onBackPressed() {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('هل أنت متأكد؟',textDirection: TextDirection.rtl,),
-            content:Text('أنت على وشك إغلاق التطبيق!!',textDirection: TextDirection.rtl,),
+            title: Text(
+              'هل أنت متأكد؟',
+              textDirection: TextDirection.rtl,
+            ),
+            content: Text(
+              'أنت على وشك إغلاق التطبيق!!',
+              textDirection: TextDirection.rtl,
+            ),
             actions: <Widget>[
               FlatButton(
-                child: Text('تراجع',textDirection: TextDirection.rtl,),
+                child: Text(
+                  'تراجع',
+                  textDirection: TextDirection.rtl,
+                ),
                 onPressed: () {
                   Navigator.of(context).pop(false);
                 },
               ),
               FlatButton(
-                child: Text('تأكيد',textDirection: TextDirection.rtl,),
+                child: Text(
+                  'تأكيد',
+                  textDirection: TextDirection.rtl,
+                ),
                 onPressed: () {
                   exit(0);
                 },
@@ -229,7 +263,6 @@ class _HomeState extends State<Home> {
         });
   }
 ////////////////////////////////////////////////////////////
-
 
 //void _showonTapMessage(BuildContext context, int i) {
 //  Map c =data[i];
