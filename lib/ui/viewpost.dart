@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:wakala/ui/Data/posts.dart';
-import 'wakala.dart';
 import 'package:html/parser.dart';
 class ViewPost extends StatelessWidget{
   

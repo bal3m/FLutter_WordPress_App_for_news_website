@@ -3,21 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:package_info/package_info.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-//import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
-import 'package:wakala/ui/rigester.dart';
-import 'package:wakala/ui/search.dart';
-import 'package:wakala/ui/tabhome.dart';
-import 'home.dart';
-import 'wakala.dart';
 import 'Data/posts.dart';
 import 'package:html/parser.dart';
 import 'widgets/slide_item.dart';
 import 'viewpost.dart';
-import 'openedNotification.dart';
-import 'viewbycat.dart';
 
 class Whome extends StatefulWidget {
   @override
@@ -28,7 +19,6 @@ class _WhomeState extends State<Whome> {
   List x = new List();
   String imgurl =
       'http://w.almustaqbal.ly/wp-content/uploads/2019/06/64627701_442078543247525_3828041687351951360_n.png';
-//   FirebaseMessaging firebaseMessaging = new FirebaseMessaging();
   @override
   void initState() {
     try {
@@ -42,10 +32,6 @@ class _WhomeState extends State<Whome> {
         .setNotificationReceivedHandler((OSNotification notification) {});
     OneSignal.shared
         .setNotificationOpenedHandler((OSNotificationOpenedResult result) {
-//      print("action: ${result.action.type}-${result.action.actionId}, notification: ${result.notification.jsonRepresentation()}");
-//      x.add(result.notification.jsonRepresentation());
-//      print(x[0]['payload']['alert']);
-//      Navigator.push(context, MaterialPageRoute(builder: (context)=> OpenedNotification(title: x[0]['payload']['alert'],)));
     });
 //
     PageController _pageController;
@@ -57,6 +43,7 @@ class _WhomeState extends State<Whome> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+      backgroundColor:   Colors.grey.shade100,
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: Center(
@@ -92,7 +79,7 @@ class _WhomeState extends State<Whome> {
               height: MediaQuery.of(context).size.height / 2.4,
               width: MediaQuery.of(context).size.width,
               child: FutureBuilder(
-                  future: pinned(),
+                  future: pinned(18),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       return ListView.builder(
@@ -142,6 +129,81 @@ class _WhomeState extends State<Whome> {
             SizedBox(
               height: 10,
             ),
+            //section 1 pinned
+    Row(
+                textDirection: TextDirection.rtl,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    "مجلس النواب الليبي",
+                    textDirection: TextDirection.rtl,
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      fontFamily: 'Tajawal',
+                      fontSize: 23,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                ]),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Container(
+                height: MediaQuery.of(context).size.height / 2.4,
+                width: MediaQuery.of(context).size.width,
+                child: FutureBuilder(
+                    future: majles(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 10,
+                          itemBuilder: (BuildContext context, int index) {
+                            Map trend = snapshot.data[index];
+                            String title =
+                                snapshot.data[index]['title']['rendered'];
+                            String image = snapshot.data[index]
+                                ['jetpack_featured_media_url'];
+                            String content =
+                                snapshot.data[index]['content']['rendered'];
+                            String img = trend['jetpack_featured_media_url'];
+
+                            return InkWell(
+                              onTap: () => {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ViewPost(
+                                              title: title,
+                                              content: content,
+                                              image: image,
+                                            )))
+                              },
+                              child: SlideItem(
+                                title:
+                                    parse(trend['title']['rendered'].toString())
+                                        .documentElement
+                                        .text,
+                                img: trend['jetpack_featured_media_url'] == ''
+                                    ? imgurl
+                                    : trend['jetpack_featured_media_url'],
+                              ),
+                            );
+                          },
+                        );
+                      }
+                      return Center(
+                          child: CircularProgressIndicator(
+                        backgroundColor: Color.fromRGBO(212, 175, 55, 1),
+                        valueColor: new AlwaysStoppedAnimation<Color>(
+                            Color.fromRGBO(27, 38, 50, 1)),
+                      ));
+                    }),
+              ),
+            ),
+            //section 2
+          SizedBox(
+              height: 10,
+            ),
             Row(
                 textDirection: TextDirection.rtl,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -163,7 +225,7 @@ class _WhomeState extends State<Whome> {
                 height: MediaQuery.of(context).size.height / 2.4,
                 width: MediaQuery.of(context).size.width,
                 child: FutureBuilder(
-                    future: fetchFromApi(),
+                    future:pinned(13),
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         return ListView.builder(
@@ -271,7 +333,7 @@ versionCheck(context) async {
 
   try {
     // Using default duration to force fetching from remote server.
-    await remoteConfig.fetch(expiration: const Duration(seconds: 0));
+    await remoteConfig.fetch(expiration: const Duration(seconds: 2));
     await remoteConfig.activateFetched();
     remoteConfig.getString('force_update_current_version');
     double newVersion = double.parse(remoteConfig

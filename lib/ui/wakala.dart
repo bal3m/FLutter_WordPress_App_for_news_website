@@ -1,6 +1,4 @@
-//import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_pagewise/flutter_pagewise.dart';
 import 'package:wakala/ui/viewpost.dart';
 import 'package:wakala/ui/widgets/slide_item.dart';
 import 'Data/posts.dart';
@@ -23,50 +21,17 @@ class _WakalaState extends State<Wakala> {
   Future<void> getLenght() async {
     postsLenght = await fetchByCat(widget.id);
   }
-
-//   FirebaseMessaging firebaseMessaging = new FirebaseMessaging();
   @override
   void initState() {
     super.initState();
     this.getLenght();
-//   firebaseMessaging.configure(
-//     onMessage: (Map<String, dynamic> message) {
-//       print('onMessage called: $message');
-//        showDialog(
-//                context: context,
-//                builder: (context) => AlertDialog(
-//                        content: ListTile(
-//                        title: Text(message['notification']['title']),
-//                        subtitle: Text(message['notification']['body']),
-//                        ),
-//                        actions: <Widget>[
-//                        FlatButton(
-//                            child: Text('Ok'),
-//                            onPressed: () => Navigator.of(context).pop(),
-//                        ),
-//                    ],
-//                ),
-//            );
-//
-//     },
-//     onResume: (Map<String, dynamic> message) {
-//       print('onResume called: $message');
-//     },
-//     onLaunch: (Map<String, dynamic> message) {
-//       print('onLaunch called: $message');
-//     },
-//   );
-//   firebaseMessaging.requestNotificationPermissions(
-//        const IosNotificationSettings(sound: true, badge: true, alert: true));
-//   firebaseMessaging.getToken().then((token){
-//   print('FCM Token: $token');
-// });
   }
 
   @override
   Widget build(BuildContext cntx) {
     // TODO: implement build
     return Scaffold(
+       backgroundColor:   Colors.grey.shade100,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
         child: Container(
@@ -77,6 +42,8 @@ class _WakalaState extends State<Wakala> {
               builder: (cntx, snapshot) {
                 if (snapshot.hasData) {
                   print(postsLenght.length);
+                  print('size=${ MediaQuery.of(context).size.height/4}');
+                  print('size=${ MediaQuery.of(context).size.width}');
                   return ListView.builder(
                     scrollDirection: Axis.vertical,
                     itemCount:

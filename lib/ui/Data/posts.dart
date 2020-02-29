@@ -31,8 +31,13 @@ Future<List> search(s) async{
     find =json.decode(res.body);
     return find;
   }
-Future<List> pinned ()async{
-  http.Response res =await http.get('https://w.almustaqbal.ly/wp-json/wp/v2/posts?categories=18');
+Future<List> pinned (int id)async{
+  http.Response res =await http.get('https://w.almustaqbal.ly/wp-json/wp/v2/posts?categories=$id');
+  find =json.decode(res.body);
+  return find;
+}
+Future<List> majles ()async{
+  http.Response res =await http.get('https://w.almustaqbal.ly/wp-json/wp/v2/posts?categories=10');
   find =json.decode(res.body);
   return find;
 }

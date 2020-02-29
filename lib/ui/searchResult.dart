@@ -1,15 +1,9 @@
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-//import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:wakala/ui/search.dart';
-import 'package:wakala/ui/tabhome.dart';
 import 'package:wakala/ui/viewpost.dart';
-import 'package:wakala/ui/whome.dart';
 import 'package:wakala/ui/widgets/slide_item.dart';
 import 'Data/posts.dart';
 import 'package:html/parser.dart';
 
-import 'home.dart';
  class Result extends StatefulWidget {
    final String search;
    

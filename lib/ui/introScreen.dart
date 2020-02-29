@@ -2,7 +2,6 @@ import 'package:intro_slider/intro_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_slider/slide_object.dart';
 import 'package:wakala/ui/homepage.dart';
-import 'package:wakala/ui/whome.dart';
 import 'package:wakala/util/colors.dart';
 class Intro extends StatefulWidget {
   @override

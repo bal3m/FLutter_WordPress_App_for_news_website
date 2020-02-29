@@ -37,7 +37,7 @@ class _SlideItemState extends State<SlideItem> {
               Stack(
                 children: <Widget>[
                   Container(
-                    height: MediaQuery.of(context).size.height/5,
+                    height: MediaQuery.of(context).size.height/4,
                     width: MediaQuery.of(context).size.width,
                     child: ClipRRect(
                       borderRadius: BorderRadius.only(
@@ -95,7 +95,7 @@ class _SlideItemState extends State<SlideItem> {
                       child: Padding(
                         padding: EdgeInsets.all(4.0),
                         child:Text(
-                          " اقرأه كاملا ",
+                          " إقرأه كاملا ",
                           style: TextStyle(
                             fontSize: 10,
                             color: Color.fromRGBO(27,38,50,1),
