@@ -78,7 +78,7 @@ OneSignal.shared.setInFocusDisplayType(OSNotificationDisplayType.notification);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'وكالة أنباء المستقبل',
+      title: 'YOUR APP TITLE',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

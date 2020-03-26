@@ -7,42 +7,42 @@ List idCat=new List();
 List find =new List();
 
 Future <List> fetchFromApi() async{
-  final response=await http.get('http://w.almustaqbal.ly/wp-json/wp/v2/posts',headers:{"Accept":"application/json"});
+  final response=await http.get('http://Your-WordPress-URL/wp-json/wp/v2/posts',headers:{"Accept":"application/json"});
   api = json.decode(response.body);
   return api;
 }
 Future <List> fetchbyID (int id) async{
-  final res =await http.get('http://w.almustaqbal.ly/wp-json/wp/v2/posts?include[]=$id');
+  final res =await http.get('http://Your-WordPress-URL/wp-json/wp/v2/posts?include[]=$id');
   var conv=json.decode(res.body);
   return conv;
 }
 Future <List> fetchCategory() async {
-  final res= await http.get('https://w.almustaqbal.ly/wp-json/wp/v2/categories');
+  final res= await http.get('https://Your-WordPress-URL/wp-json/wp/v2/categories');
   cat= json.decode(res.body);
   return cat;
 }
 Future<List> fetchByCat(int id) async {
-final res =await http.get('https://w.almustaqbal.ly/wp-json/wp/v2/posts?categories=$id&per_page=25');
+final res =await http.get('https://Your-WordPress-URL/wp-json/wp/v2/posts?categories=$id&per_page=25');
   idCat=json.decode(res.body);
   return idCat;
 }
 Future<List> search(s) async{
-    http.Response res =await http.get('https://w.almustaqbal.ly/wp-json/wp/v2/posts?search=$s');
+    http.Response res =await http.get('https://Your-WordPress-URL/wp-json/wp/v2/posts?search=$s');
     find =json.decode(res.body);
     return find;
   }
 Future<List> pinned (int id)async{
-  http.Response res =await http.get('https://w.almustaqbal.ly/wp-json/wp/v2/posts?categories=$id');
+  http.Response res =await http.get('https://Your-WordPress-URL/wp-json/wp/v2/posts?categories=$id');
   find =json.decode(res.body);
   return find;
 }
 Future<List> majles ()async{
-  http.Response res =await http.get('https://w.almustaqbal.ly/wp-json/wp/v2/posts?categories=10');
+  http.Response res =await http.get('https://Your-WordPress-URL/wp-json/wp/v2/posts?categories=10');
   find =json.decode(res.body);
   return find;
 }
 Future<List> fetchByNotification(String title) async {
-  final res =await http.get('https://w.almustaqbal.ly/wp-json/wp/v2/posts?title=$title');
+  final res =await http.get('https://Your-WordPress-URL/wp-json/wp/v2/posts?title=$title');
   idCat=json.decode(res.body);
   return idCat;
 }

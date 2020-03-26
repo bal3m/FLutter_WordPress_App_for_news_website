@@ -20,7 +20,7 @@ class _TabBarDemoState extends State<TabBarDemo> {
         length: 14,
         child: Scaffold(
                       backgroundColor:   Colors.grey.shade100,
-          appBar: AppBar(title: Center(child: Text('وكالة أنباء المستقبل',textDirection: TextDirection.rtl,style: TextStyle(fontFamily: 'Tajawal'),)),backgroundColor: Color.fromRGBO(27,38,50,1),
+          appBar: AppBar(title: Center(child: Text('YOUR TITLE',textDirection: TextDirection.rtl,style: TextStyle(fontFamily: 'Tajawal'),)),backgroundColor: Color.fromRGBO(27,38,50,1),
 
 
           bottom: TabBar(

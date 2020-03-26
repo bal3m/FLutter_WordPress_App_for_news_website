@@ -18,7 +18,7 @@ class _IntroState extends State<Intro> {
     slides.add(
       new Slide(
         title: "مرحبا",
-        description: "مرحبا بكم في تطبيق وكالة أنباء المستقبل",
+        description: "YOUR TITLE",
         pathImage: "images/icon.png",
         backgroundColor:HexColor('#011640'),
       ),
@@ -53,7 +53,7 @@ class _IntroState extends State<Intro> {
       new Slide(
         title: "حقوق النشر",
         description:
-        "هذا التطبيق يتبع لمؤسسة الخدمات الإعلامية بمجلس النواب الليبي",
+        "COPYRIGHTS",
         pathImage: "images/mof.png",
         backgroundColor: HexColor('#011640'),
       ),

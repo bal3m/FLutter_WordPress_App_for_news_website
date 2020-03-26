@@ -15,7 +15,7 @@ class Wakala extends StatefulWidget {
 
 class _WakalaState extends State<Wakala> {
   String imgurl =
-      'http://w.almustaqbal.ly/wp-content/uploads/2019/06/64627701_442078543247525_3828041687351951360_n.png';
+      'YOUR IMAGE URL HERE';
   List postsLenght = new List();
 
   Future<void> getLenght() async {

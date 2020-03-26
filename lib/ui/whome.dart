@@ -48,7 +48,7 @@ class _WhomeState extends State<Whome> {
       appBar: AppBar(
         title: Center(
             child: Text(
-          'وكالة أنباء المستقبل',
+          'YOUR APP TITLE HERE',
           textDirection: TextDirection.rtl,
           style: TextStyle(fontFamily: 'Tajawal'),
         )),
