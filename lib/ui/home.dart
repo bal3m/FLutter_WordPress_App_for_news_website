@@ -73,11 +73,11 @@ class _HomeState extends State<Home> {
                                   height: 10.0,
                                 ),
                                 Text(
-                                  " YOUR TEXT HERE",
+                                  " طور من قبل فريق تقنية المعلومات بمؤسسة الخدمات الإعلامية بمجلس النواب الليبي",
                                   textDirection: TextDirection.rtl,
                                 ),
                               ],
-                              applicationName: "NAME OF YOUR APP",
+                              applicationName: "وكالة أنباء المستقبل",
                               applicationVersion: "1.0.6",
 //                     applicationLegalese: "Apache License 2.0",
                             ),

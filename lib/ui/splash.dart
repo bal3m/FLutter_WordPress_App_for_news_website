@@ -50,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   width: MediaQuery.of(context).size.width,
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(0, 0, 35, 0),
-                    child: Center(child: Image.asset('IMAGE PATH')),
+                    child: Center(child: Image.asset('images/Wka.png')),
                   ),
                 ),
               ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:loading/indicator/ball_beat_indicator.dart';
+import 'package:loading/loading.dart';
 import 'package:wakala/ui/viewpost.dart';
 import 'package:wakala/ui/widgets/slide_item.dart';
 import 'Data/posts.dart';
@@ -91,69 +93,15 @@ class _ResultState extends State<Result> {
         }else if(snapshot.hasData&&find.length==0){
           return SearchResault(cntx);
         }
-        return Center(child: CircularProgressIndicator(
-          backgroundColor: Color.fromRGBO(212, 175, 55, 1),
-          valueColor: new AlwaysStoppedAnimation<Color>(Color.fromRGBO(27,38,50,1)),
-        ));
-          }
-        ),
+        return Container(
+            alignment: Alignment.center,
+            child: Loading(
+                indicator: BallBeatIndicator(),
+                size: 60.0,
+                color: Theme.of(context).accentColor));
+                  }),
         ),
       ),
-//       bottomNavigationBar: BottomNavyBar(
-//        backgroundColor: Color.fromRGBO(27,38,50,1),
-//        selectedIndex: currentIndex,
-//        showElevation: true,
-//        itemCornerRadius: 8,
-//        onItemSelected: (index) => setState(() {
-//          currentIndex = index;
-//          switch(index) {
-//              case 0: {
-//                Navigator.push(context, MaterialPageRoute(builder: (context)=>Whome()));
-//              }
-//            break;
-//
-//           case 1: {
-//              Navigator.push(context, MaterialPageRoute(builder: (context)=>TabBarDemo()));
-//            }
-//            break;
-//
-//             case 2: {
-//              Navigator.push(context, MaterialPageRoute(builder: (context)=>Search()));
-//            }
-//            break;
-//            case 3: {
-//              Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
-//            }
-//            break;
-//             default: {
-//      //statements;
-//             }
-//           break;
-//               }
-//        }),
-//        items: [
-//          BottomNavyBarItem(
-//            icon: Icon(Icons.home),
-//            title: Text('الرئيسية'),
-//            activeColor: Colors.white38,
-//          ),
-//          BottomNavyBarItem(
-//            icon: Icon(Icons.dashboard),
-//            title: Text('التصنيفات'),
-//            activeColor: Colors.white,
-//          ),
-//          BottomNavyBarItem(
-//            icon: Icon(Icons.search),
-//            title: Text('بحث'),
-//            activeColor: Colors.white,
-//          ),
-//          BottomNavyBarItem(
-//            icon: Icon(Icons.info),
-//            title: Text('عن التطبيق'),
-//            activeColor: Colors.white,
-//          ),
-//        ],
-//      ),
     );
   }
 }

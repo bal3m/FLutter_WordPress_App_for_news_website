@@ -3,13 +3,16 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:wakala/models/Category.dart';
 import 'package:wakala/ui/whome.dart';
 import 'package:wakala/ui/home.dart';
+import 'package:wakala/ui/settings.dart';
 import 'package:wakala/ui/tabhome.dart';
 import 'package:wakala/ui/search.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:package_info/package_info.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:wakala/ui/categories.dart';
 
 class MyHomePage extends StatefulWidget{
   @override
@@ -45,9 +48,9 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           children: <Widget>[
             Whome(),
-            TabBarDemo(),
+            Categories(),
             Search(),
-            Home()
+            Settings()
           ],
         ),
       ),

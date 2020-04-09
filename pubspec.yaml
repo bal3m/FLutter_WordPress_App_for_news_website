@@ -32,6 +32,9 @@ dependencies:
   flutter_pagewise: ^1.2.3
   onesignal_flutter: ^2.3.2
   cupertino_icons: ^0.1.2
+  intl: 
+  loading: 
+  share:
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +61,10 @@ flutter:
     - images/start.png
     - images/rocket.png
     - images/progress.gif
+    - images/more/favourite.png
+    - images/more/contact.png
+    - images/more/share.png
+    - images/more/notification.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

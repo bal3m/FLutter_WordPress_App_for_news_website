@@ -9,7 +9,9 @@ import 'Data/posts.dart';
 import 'package:html/parser.dart';
 import 'widgets/slide_item.dart';
 import 'viewpost.dart';
-
+import 'package:loading/indicator/ball_beat_indicator.dart';
+import 'package:loading/loading.dart';
+import 'package:wakala/general/constants.dart';
 class Whome extends StatefulWidget {
   @override
   _WhomeState createState() => _WhomeState();
@@ -48,7 +50,7 @@ class _WhomeState extends State<Whome> {
       appBar: AppBar(
         title: Center(
             child: Text(
-          'YOUR APP TITLE HERE',
+          App_title,
           textDirection: TextDirection.rtl,
           style: TextStyle(fontFamily: 'Tajawal'),
         )),
@@ -64,7 +66,7 @@ class _WhomeState extends State<Whome> {
                 textDirection: TextDirection.rtl,
                 children: <Widget>[
                   Text(
-                    "مقالات مثبتة",
+                    FEATURED_NAME2,
                     textDirection: TextDirection.rtl,
                     textAlign: TextAlign.right,
                     style: TextStyle(
@@ -79,7 +81,7 @@ class _WhomeState extends State<Whome> {
               height: MediaQuery.of(context).size.height / 2.4,
               width: MediaQuery.of(context).size.width,
               child: FutureBuilder(
-                  future: pinned(18),
+                  future: pinned(FEATURED_ID2),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       return ListView.builder(
@@ -118,12 +120,12 @@ class _WhomeState extends State<Whome> {
                         },
                       );
                     }
-                    return Center(
-                        child: CircularProgressIndicator(
-                      backgroundColor: Color.fromRGBO(212, 175, 55, 1),
-                      valueColor: new AlwaysStoppedAnimation<Color>(
-                          Color.fromRGBO(27, 38, 50, 1)),
-                    ));
+                  return Container(
+            alignment: Alignment.center,
+            child: Loading(
+                indicator: BallBeatIndicator(),
+                size: 60.0,
+                color: Theme.of(context).accentColor));
                   }),
             ),
             SizedBox(
@@ -135,7 +137,7 @@ class _WhomeState extends State<Whome> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    "مجلس النواب الليبي",
+                    FEATURED_NAME1,
                     textDirection: TextDirection.rtl,
                     textAlign: TextAlign.right,
                     style: TextStyle(
@@ -151,7 +153,7 @@ class _WhomeState extends State<Whome> {
                 height: MediaQuery.of(context).size.height / 2.4,
                 width: MediaQuery.of(context).size.width,
                 child: FutureBuilder(
-                    future: majles(),
+                    future: pinned(FEATURED_ID1),
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         return ListView.builder(
@@ -191,15 +193,16 @@ class _WhomeState extends State<Whome> {
                           },
                         );
                       }
-                      return Center(
-                          child: CircularProgressIndicator(
-                        backgroundColor: Color.fromRGBO(212, 175, 55, 1),
-                        valueColor: new AlwaysStoppedAnimation<Color>(
-                            Color.fromRGBO(27, 38, 50, 1)),
-                      ));
-                    }),
-              ),
+                      return Container(
+            alignment: Alignment.center,
+            child: Loading(
+                indicator: BallBeatIndicator(),
+                size: 60.0,
+                color: Theme.of(context).accentColor));
+                  }),
             ),
+              ),
+            
             //section 2
           SizedBox(
               height: 10,
@@ -209,7 +212,7 @@ class _WhomeState extends State<Whome> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    "آخر الأخبار",
+                    FEATURED_NAME3,
                     textDirection: TextDirection.rtl,
                     textAlign: TextAlign.right,
                     style: TextStyle(
@@ -225,7 +228,7 @@ class _WhomeState extends State<Whome> {
                 height: MediaQuery.of(context).size.height / 2.4,
                 width: MediaQuery.of(context).size.width,
                 child: FutureBuilder(
-                    future:pinned(13),
+                    future:pinned(FEATURED_ID3),
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         return ListView.builder(
@@ -265,13 +268,13 @@ class _WhomeState extends State<Whome> {
                           },
                         );
                       }
-                      return Center(
-                          child: CircularProgressIndicator(
-                        backgroundColor: Color.fromRGBO(212, 175, 55, 1),
-                        valueColor: new AlwaysStoppedAnimation<Color>(
-                            Color.fromRGBO(27, 38, 50, 1)),
-                      ));
-                    }),
+                      return  Container(
+            alignment: Alignment.center,
+            child: Loading(
+                indicator: BallBeatIndicator(),
+                size: 60.0,
+                color: Theme.of(context).accentColor));
+                  }),
               ),
             ),
           ],
